@@ -7,4 +7,11 @@ function theme_enqueue_styles() {
 	wp_enqueue_style('child-style', get_stylesheet_directory_uri() . '/style.css', array('parent-style') );
 }
 
+// Remove Google fonts for Twenty Sixteen
+if ( ! function_exists( 'twentysixteen_fonts_url' ) ) :
+function twentysixteen_fonts_url() {
+        return '';
+}
+endif;
+
 ?>
