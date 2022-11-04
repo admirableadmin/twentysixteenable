@@ -22,6 +22,9 @@ function twentysixteen_fonts_url() {
 }
 endif;
 
+// Remove meta tag which displays the wordpress version number
+remove_action('wp_head', 'wp_generator');
+
 function files_scan($path, $ext = false) {
 	if (!empty($ext)) {
 		if (!is_array($ext)) {
