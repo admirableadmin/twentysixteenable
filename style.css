@@ -8,3 +8,32 @@ Template: twentysixteen
 Version: 1.0
 */
 
+/* header navigation is below site-title and site-description */
+.site-header-main {
+	display: block;
+}
+
+/* header text in white color */
+.site-branding .site-title a {
+        color: #fff;
+}
+.site-description {
+        color: #fff;
+}
+.main-navigation .current-menu-item > a, .main-navigation .current-menu-ancestor > a {
+	background-color: #fff;
+}
+.main-navigation a:hover, .main-navigation a:focus {
+	background-color: #333;
+}
+.main-navigation ul li > a {
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+/* header navigation more space */
+.site-header-main {
+	padding-top: 20px;
+	padding-left: 30px;
+}
+
