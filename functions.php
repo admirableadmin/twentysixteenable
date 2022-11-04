@@ -14,14 +14,7 @@ function twentysixteen_fonts_url() {
 }
 endif;
 
-// Add a random backgound image to header
-add_action('wp_head', 'add_backgound_image_to_header');
-function add_backgound_image_to_header() {
-	// absolute path to the child theme directory
-	$dir = get_stylesheet_directory() . '/images/headers';
-
-	// allowed image extension
-	$ext = array('gif','jpeg','jpg','png');
+function files_scan($path, $ext = false) {
 	if (!empty($ext)) {
 		if (!is_array($ext)) {
 			$ext = array($ext);
@@ -29,19 +22,32 @@ function add_backgound_image_to_header() {
 		$ext_match = implode('|', $ext);
 	}
 
-	// find all images
-	$images = array();
-	if ($handle = opendir($dir)) {
+	// find all files
+	$files = array();
+	if ($handle = opendir($path)) {
 		while (false !== ($entry = readdir($handle))) {
 			if ($entry != "." && $entry != "..") {
 				if (empty($ext) or preg_match('/\.(' . $ext_match . ')$/i', $entry)) {
-					$images[] = $entry;
+					$files[] = $entry;
 				}
 			}
 		}
 		closedir($handle);
 	}
-	//print_r($images);
+
+	//print_r($files);
+	return $files;
+}
+
+function get_header_image_url(){
+	// absolute path to the child theme directory
+	$dir = get_stylesheet_directory() . '/images/headers';
+
+	// allowed image extension
+	$ext = array('gif','jpeg','jpg','png');
+
+	// all images in directory
+	$images = files_scan($dir, $ext);
 
 	// select an image by random
 	$size = count($images);
@@ -51,16 +57,23 @@ function add_backgound_image_to_header() {
 		$header_image = $images[0];
 	}
 
-	// url to image in child theme directory
-	$image_url = get_stylesheet_directory_uri() . "/images/headers/$header_image";
 	//echo "image_url=" . $image_url;
-?>
-<style type="text/css">
-.site-header-main {
-	background-image: url("<?php echo $image_url; ?>") !important;
+        if ( empty($header_image) )
+		return false;
+
+	// url to image in child theme directory
+	return get_stylesheet_directory_uri() . "/images/headers/$header_image";
 }
-</style>
+
+// Add a random background image to header
+add_action('wp_head', 'add_background_image_to_header');
+function add_background_image_to_header() {
+	$image_url = get_header_image_url();
+	if ( $image_url ):
+?>
+<style media="screen">.site-header-main { background-image: url("<?php echo $image_url; ?>"); }</style>
 <?php
+	endif;
 }
 
 
