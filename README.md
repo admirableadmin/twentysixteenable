@@ -3,6 +3,8 @@ Child Theme for Twenty Sixteen
 
 _Since I really like the K2 theme for wordpress, which hasn't been developed further for a long time, I have my own [fork of K2](https://github.com/admirableadmin/k2-for-wordpress) for minor adjustments. With every new Wordpress version and higher PHP versions, it gets complicated. So the goal is to transfer the basic look of K2 to another theme._
 
+![screenshot](screenshot.png)
+
 ## Features
 
 * remove google fonts - hello DSGVO
