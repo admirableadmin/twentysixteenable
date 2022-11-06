@@ -82,7 +82,7 @@ function add_background_image_to_header() {
 	$image_url = get_header_image_url();
 	if ( $image_url ):
 ?>
-<style media="screen">.site-header-main { background-image: url("<?php echo $image_url; ?>"); }</style>
+<style media="screen">@media screen and (min-width: 56.875em) {.site-header-main { background-image: url("<?php echo $image_url; ?>"); }}</style>
 <?php
 	endif;
 }
