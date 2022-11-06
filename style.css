@@ -20,10 +20,15 @@ Version: 1.0
 .site-description {
         color: #fff;
 }
+.main-navigation a {
+        color: #fff;
+}
 .main-navigation .current-menu-item > a, .main-navigation .current-menu-ancestor > a {
+	color: #333;
 	background-color: #fff;
 }
 .main-navigation a:hover, .main-navigation a:focus {
+        color: #fff !important;
 	background-color: #333;
 }
 .main-navigation ul li > a {
